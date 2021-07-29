@@ -6,7 +6,7 @@ module.exports = {
   args: false,
   guildOnly: true,
 	execute(msg, args, Discord, config, client) {
-    if(msg.member.roles.cache.find(role => role.name == 'Moderatorzy')){
+    if(msg.member.roles.cache.find(role => role.name == 'moderacja')){
       msg.delete();
       switch(args[0]){
         case 'witaj':{
