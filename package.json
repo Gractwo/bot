@@ -1,0 +1,23 @@
+{
+  "name": "discord-bot",
+  "version": "1.0.0",
+  "description": "gractwo-bot is a Discord bot written in JavaScript, using node.js and discord.js.\r It has been created for and only serves the Gractwo Discord server. It is hosted using Heroku.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Gractwo/discord-bot.git"
+  },
+  "author": "",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/Gractwo/discord-bot/issues"
+  },
+  "homepage": "https://github.com/Gractwo/discord-bot#readme",
+  "dependencies": {
+    "discord.js": "^13.1.0",
+    "dotenv": "^10.0.0"
+  }
+}
