@@ -1,40 +1,42 @@
-require("dotenv").config();
-const Discord = require("discord.js");
-const config = require("./config.json");
-const fs = require("fs");
+require('dotenv').config();
+const Discord = require('discord.js');
+const config = require('./config.json');
+const fs = require('fs');
 
 const client = new Discord.Client();
 client.commands = new Discord.Collection();
 
 const commandFiles = fs
-	.readdirSync("./commands")
-	.filter((file) => file.endsWith(".js"));
+	.readdirSync('./commands')
+	.filter((file) => file.endsWith('.js'));
 
 for (const file of commandFiles) {
 	const command = require(`./commands/${file}`);
 	client.commands.set(command.name, command);
 }
 
-client.once("ready", () => {
+client.once('ready', () => {
 	console.log(
-		"-------------------------------------\nTHE BOT IS READY TO GO.\n-------------------------------------"
+		'-------------------------------------\nTHE BOT IS READY TO GO.\n-------------------------------------'
 	);
-	client.user.setActivity(".ping", { type: "LISTENING" });
+	client.user.setActivity('.ping', { type: 'LISTENING' });
 });
 
-client.on("message", (message) => {
+client.on('message', (message) => {
 	/* OMITTING THE COMMAND HANDLER TO CATCH ANY AND ALL MESSAGES IN THE '#rolki' CHANNEL
 	MAKING 'tf2' A VIABLE COMMAND WITHOUT A PREFIX */
 
-	if (message.channel.name == "rolki") {
+	if (message.channel.name == 'rolki') {
 		if (message.author.bot) return;
 
 		if (
-			message.content == "tf2" ||
-			message.content == "liga" ||
-			message.content == "csgo" ||
-			message.content == "minecraft" ||
-			message.content == "rainbow-six"
+			message.content == 'tf2' ||
+			message.content == 'liga' ||
+			message.content == 'csgo' ||
+			message.content == 'minecraft' ||
+			message.content == 'rainbow-six' ||
+			message.content == 'apex' ||
+			message.content == 'genshin'
 		) {
 			const role = message.member.guild.roles.cache.find(
 				(role) => role.name == message.content
@@ -52,8 +54,8 @@ client.on("message", (message) => {
 						`Odebrano Ci rangę ${message.content}, ${message.author.username}.`
 					)
 					.setColor(config.embedColor)
-					.attachFiles("./gractwo.png")
-					.setFooter("#rolki", "attachment://gractwo.png")
+					.attachFiles('./gractwo.png')
+					.setFooter('#rolki', 'attachment://gractwo.png')
 					.setTimestamp();
 				message.channel
 					.send(removeRolesEmbed)
@@ -70,8 +72,8 @@ client.on("message", (message) => {
 						`Przyznano Ci rangę ${message.content}, ${message.author.username}.`
 					)
 					.setColor(config.embedColor)
-					.attachFiles("./gractwo.png")
-					.setFooter("#rolki", "attachment://gractwo.png")
+					.attachFiles('./gractwo.png')
+					.setFooter('#rolki', 'attachment://gractwo.png')
 					.setTimestamp();
 				message.channel
 					.send(addRolesEmbed)
@@ -80,7 +82,7 @@ client.on("message", (message) => {
 			}
 		} else {
 			if (
-				!message.member.roles.cache.find((role) => role.name == "Moderatorzy")
+				!message.member.roles.cache.find((role) => role.name == 'Moderatorzy')
 			) {
 				console.log(
 					`${message.author.username} spammed the rolki channel with a bad message`
@@ -89,8 +91,8 @@ client.on("message", (message) => {
 				const rolkiWrongMessageEmbed = new Discord.MessageEmbed()
 					.setTitle(`To nie jest kanał na pisanie, ${message.author.username}`)
 					.setColor(config.embedColorFail)
-					.attachFiles("./gractwo.png")
-					.setFooter("#rolki", "attachment://gractwo.png")
+					.attachFiles('./gractwo.png')
+					.setFooter('#rolki', 'attachment://gractwo.png')
 					.setTimestamp();
 				message.channel
 					.send(rolkiWrongMessageEmbed)
@@ -101,10 +103,10 @@ client.on("message", (message) => {
 		}
 	}
 
-	if (message.content.toLowerCase() === "!rank")
+	if (message.content.toLowerCase() === '!rank')
 		message.channel.send({
 			files: [
-				"https://cdn.discordapp.com/attachments/281070649374670849/871103257580281876/tenor.gif",
+				'https://cdn.discordapp.com/attachments/281070649374670849/871103257580281876/tenor.gif',
 			],
 		});
 
@@ -118,7 +120,7 @@ client.on("message", (message) => {
 	if (!client.commands.has(commandName)) return;
 	const command = client.commands.get(commandName);
 
-	if (command.guildOnly && message.channel.type === "dm") {
+	if (command.guildOnly && message.channel.type === 'dm') {
 		return message.reply("I can't execute that command inside DMs!");
 	}
 
@@ -132,14 +134,14 @@ client.on("message", (message) => {
 		command.execute(message, args, Discord, config, client);
 	} catch (error) {
 		console.error(error);
-		message.reply("there was an error trying to execute that command.");
+		message.reply('there was an error trying to execute that command.');
 	}
 });
 
 client.login(process.env.BOT_TOKEN).then(() => getStatus());
 
 // Funne API hehehehe
-const http = require("http");
+const http = require('http');
 const port = process.env.PORT || 3000;
 
 let status;
