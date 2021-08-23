@@ -3,11 +3,16 @@ module.exports = {
 	execute(msg, args, cfg) {
 		const pingembed = {
 			color: cfg.hexBlue,
-			title: `ping`,
 			timestamp: new Date(),
-			description: `Pong! ${Date.now() - msg.createdTimestamp}`,
+			footer: {
+				text: `Komenda wywołana przez ${msg.author.tag}`,
+				icon_url: cfg.iconurl,
+			},
+			title: 'Pong!',
+			description: `Ping jednostronny wynosi ${
+				Date.now() - msg.createdTimestamp
+			}`,
 		};
-		msg.channel.send(`pong`);
 		msg.channel.send({ embeds: [pingembed] });
 	},
 };
