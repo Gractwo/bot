@@ -18,7 +18,6 @@ for (const Fl of cmdsFls) {
 }
 
 cl.on('messageCreate', (msg) => {
-	console.log('a message has been received');
 	if (!msg.content.startsWith(cfg.prefix) || msg.author.bot) return;
 
 	const args = msg.content.slice(cfg.prefix.length).trim().split(/ +/);
@@ -30,9 +29,13 @@ cl.on('messageCreate', (msg) => {
 	try {
 		cmd.execute(msg);
 	} catch (error) {
-		console.error(error);
-		message.reply(`the above error occured while trying to execute ${cmd}`);
+		console.error(
+			`msgCommand error: ${cmdName} by ${msg.author.tag}\n--\n${error}\n--`
+		);
+		msg.reply(`An error occured while trying to execute ${cmdName}`);
+		return;
 	}
+	console.log(`msgCommand: ${cmdName} by ${msg.author.tag}`);
 });
 
 cl.once('ready', () => {
