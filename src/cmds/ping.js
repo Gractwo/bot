@@ -5,7 +5,7 @@ module.exports = {
 			color: cfg.hexBlue,
 			timestamp: new Date(),
 			footer: {
-				text: `Komenda wywołana przez ${msg.author.tag}`,
+				text: `Komenda wywołana przez ${msg.author.tag}ms.`,
 				icon_url: cfg.iconurl,
 			},
 			title: 'Pong!',
