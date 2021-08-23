@@ -27,7 +27,7 @@ cl.on('messageCreate', (msg) => {
 	const cmd = cl.cmds.get(cmdName);
 
 	try {
-		cmd.execute(msg);
+		cmd.execute(msg, args, cfg);
 	} catch (error) {
 		console.error(
 			`msgCommand error: ${cmdName} by ${msg.author.tag}\n--\n${error}\n--`
