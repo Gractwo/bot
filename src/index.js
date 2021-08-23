@@ -3,7 +3,9 @@ const cfg = require('./cfg.json');
 const fs = require('fs');
 require('dotenv').config();
 
-const cl = new Client({ intents: [Intents.FLAGS.GUILDS] });
+const cl = new Client({
+	intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES],
+});
 cl.cmds = new Collection();
 
 const cmdsFls = fs
@@ -15,8 +17,6 @@ for (const Fl of cmdsFls) {
 	cl.cmds.set(cmd.name, cmd);
 }
 
-// FIXME: messageCreate is never invoked for some reason, disabling
-// literally all of the bot's functionality
 cl.on('messageCreate', (msg) => {
 	console.log('a message has been received');
 	if (!msg.content.startsWith(cfg.prefix) || msg.author.bot) return;
