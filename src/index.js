@@ -1,12 +1,15 @@
-const { Client, Intents, Collection } = require('discord.js');
-const cfg = require('./cfg.json');
+const discordjs = require('discord.js');
 const fs = require('fs');
 require('dotenv').config();
 
-const cl = new Client({
-	intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES],
+const cl = new discordjs.Client({
+	intents: [
+		discordjs.Intents.FLAGS.GUILDS,
+		discordjs.Intents.FLAGS.GUILD_MESSAGES,
+	],
 });
-cl.cmds = new Collection();
+cl.cfg = require('./cfg.json');
+cl.cmds = new discordjs.Collection();
 
 const cmdsFls = fs
 	.readdirSync(`./src/cmds`)
@@ -18,24 +21,26 @@ for (const Fl of cmdsFls) {
 }
 
 cl.on('messageCreate', (msg) => {
-	if (!msg.content.startsWith(cfg.prefix) || msg.author.bot) return;
+	if (!msg.content.startsWith(cl.cfg.prefix) || msg.author.bot) return;
 
-	const args = msg.content.slice(cfg.prefix.length).trim().split(/ +/);
+	const args = msg.content.slice(cl.cfg.prefix.length).trim().split(/ +/);
 	const cmdName = args.shift().toLowerCase();
 
 	if (!cl.cmds.has(cmdName)) return;
 	const cmd = cl.cmds.get(cmdName);
 
 	try {
-		cmd.execute(msg, args, cfg);
+		cmd.execute(cl, msg, args);
 	} catch (error) {
 		console.error(
-			`msgCommand error: ${cmdName} by ${msg.author.tag}\n--\n${error}\n--`
+			`msgCommand error: ${cmdName} with args ${args} by ${msg.author.tag}\n--\n${error}\n--`
 		);
-		msg.reply(`An error occured while trying to execute ${cmdName}`);
+		msg.reply(
+			`An error occured while trying to execute ${cmdName} with args ${args}`
+		);
 		return;
 	}
-	console.log(`msgCommand: ${cmdName} by ${msg.author.tag}`);
+	console.log(`msgCommand: ${cmdName + args} by ${msg.author.tag}`);
 });
 
 cl.once('ready', () => {
@@ -44,4 +49,8 @@ cl.once('ready', () => {
 	cl.user.setActivity('.ping', { type: 'LISTENING' });
 });
 
-cl.login(process.env.token);
+cl.login(process.env.token); // here comes the boooy
+// hello boy
+// welcome
+// there he is
+// he is here

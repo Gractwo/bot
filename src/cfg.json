@@ -2,5 +2,81 @@
 	"prefix": ".",
 	"hexBlue": "61f2ea",
 	"hexRed": "fb636b",
-	"iconurl": "https://i.imgur.com/4AmRDyX.png"
+	"iconurl": "https://i.imgur.com/4AmRDyX.png",
+	"embedFields": {
+		"witaj": [
+			{
+				"name": "Zasady",
+				"value": "Zasady serwera są spisane na kanale `regulamin`. Pamiętajcie, by tam zajrzeć."
+			},
+			{
+				"name": "Gractwo WWW",
+				"value": "http://gractwo.pl",
+				"inline": true
+			},
+			{
+				"name": "Gractwo DISCORD",
+				"value": "http://gractwo.pl/discord",
+				"inline": true
+			},
+			{
+				"name": "Gractwo TWITTER",
+				"value": "http://gractwo.pl/twitter",
+				"inline": true
+			},
+			{
+				"name": "Gractwo YOUTUBE",
+				"value": "http://gractwo.pl/youtube",
+				"inline": true
+			},
+			{
+				"name": "Gractwo GITHUB",
+				"value": "http://gractwo.pl/github",
+				"inline": true
+			},
+			{
+				"name": "Gractwo FACEBOOK",
+				"value": "http://gractwo.pl/fb",
+				"inline": true
+			}
+		],
+		"regulamin": [
+			{
+				"name": "§1 Szacunek",
+				"value": "Na naszym serwerze obowiązuje szacunek do innych osób podczas niesatyrycznej dyskusji."
+			},
+			{
+				"name": "§2 Spam / Trolling",
+				"value": "Jeżeli będziesz bezużytecznie spamować lub nieprzyjmenie się zachowywać zostaniesz zbanowany."
+			},
+			{
+				"name": "§3 Shitposting",
+				"value": "Kanał #shitposting jest najbardziej wyluzowanym kanałem na naszym serwerze. Nie oznacza to jednak, że nie jest monitorowany. Jeżeli czujesz, że rzecz którą chcesz tam umieścić jest nadzwyczajnie kontrowersyjna, zastanów się dwa razy przed wciśnięciem Enter."
+			},
+			{
+				"name": "§4 Poprawne Kanały",
+				"value": "Rozmowy na dany temat powinny toczyć się w kanałach do tego przeznaczonych."
+			},
+			{
+				"name": "§5 Memy i Gify",
+				"value": "Memy i Gify nie są zbyt przyjemne dla oka bez kontekstu. Najlepiej jest nie postować ich, jeżeli nie pasują do prowadzonej aktualnie dyskusji."
+			},
+			{
+				"name": "§6 Reklamy",
+				"value": "Zakaz reklam bez zezwolenia moderatora lub administratora. Pozwolenia na reklamę muszą być wydane przed jej zamieszczeniem."
+			},
+			{
+				"name": "§7 Przestrzeganie Regulaminu",
+				"value": "Przestrzeganie regulaminu jest obowiązkowe, a to że go ktoś nie przeczytał nic nie zmienia."
+			},
+			{
+				"name": "§8 Obcowanie z botem",
+				"value": "Próby intencjonalnego łamania bota nie są mile widziane, tak jak nadużywanie go w celach spamu kanałów."
+			},
+			{
+				"name": "§9 Warunki Użytkowania Discord (ToS)",
+				"value": "Nasz serwer, jak każdy inny, musi przestrzegać zasad zapisanych w warunkach użytkowania Discorda. Przypominamy o nich, bo choć nie są zbyt restrykcyjne, nie pozwalają na kilka określonych rzeczy."
+			}
+		]
+	}
 }
