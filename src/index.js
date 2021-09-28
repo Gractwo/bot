@@ -46,7 +46,7 @@ cl.on('messageCreate', (msg) => {
 cl.once('ready', () => {
 	console.clear();
 	console.log(`bot ready; logged in as ${cl.user.tag}\n--`);
-	cl.user.setActivity('.ping', { type: 'LISTENING' });
+	cl.user.setActivity('.pomoc', { type: 'LISTENING' });
 });
 
 cl.login(process.env.token); // here comes the boooy

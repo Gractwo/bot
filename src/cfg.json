@@ -77,6 +77,7 @@
 				"name": "§9 Warunki Użytkowania Discord (ToS)",
 				"value": "Nasz serwer, jak każdy inny, musi przestrzegać zasad zapisanych w warunkach użytkowania Discorda. Przypominamy o nich, bo choć nie są zbyt restrykcyjne, nie pozwalają na kilka określonych rzeczy."
 			}
-		]
+		],
+		"pomocDesc": "Komenda objaśniająca bota i jego zastosowanie, a także dostępne komendy.\n\nBot Gractwa funkcjonuje jako własne rozwiązanie na problemy z administrowaniem serwera Discord. Umożliwia między innymi samo-nadawanie rolek od gier, lub odsłuchiwanie muzyki.\n\nPoniżej znajduje się lista dostępnych komend:"
 	}
 }
