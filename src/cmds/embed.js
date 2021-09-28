@@ -1,6 +1,8 @@
 module.exports = {
 	name: 'embed',
 	execute(cl, msg, args) {
+		// TODO: add a permissions check here to make sure nobody can spawn msgs
+		// not intended outside of specific scenarios
 		const embed = {
 			color: cl.cfg.hexBlue,
 			timestamp: new Date(),
