@@ -3,6 +3,15 @@
 	"hexBlue": "61f2ea",
 	"hexRed": "fb636b",
 	"iconurl": "https://i.imgur.com/4AmRDyX.png",
+	"rolesList": [
+		"tf2",
+		"liga",
+		"csgo",
+		"minecraft",
+		"rainbow-six",
+		"apex",
+		"genshin"
+	],
 	"embedFields": {
 		"witaj": [
 			{
