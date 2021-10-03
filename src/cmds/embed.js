@@ -1,3 +1,5 @@
+const { MessageActionRow, MessageButton } = require('discord.js');
+
 module.exports = {
 	name: 'embed',
 	execute(cl, msg, args) {
@@ -31,7 +33,31 @@ module.exports = {
 			case 'rolki':
 				embed.title = 'Rolki';
 				embed.description = '#rolki jest kanałem do przyznawania sobie ról.';
-				readyMsg = { embeds: [embed] /*components: [rows]*/ };
+				embed.footer.text = '#rolki';
+				// code responsible for making lists of buttons out of cl.cfg.rolesList
+				// & including them in the readyMsg
+				let i = 1,
+					l = 0;
+				let btnList = [];
+				while (
+					cl.cfg.rolesList.length / 5 +
+						(cl.cfg.rolesList.length % 5 != 0 ? 1 : 0) >=
+					i
+				) {
+					let btnRow = new MessageActionRow();
+					for (l; l <= 5 * i - 1 && cl.cfg.rolesList[l] != undefined; l++) {
+						btnRow.addComponents(
+							new MessageButton()
+								.setCustomId(cl.cfg.rolesList[l])
+								.setLabel(`rolka ${cl.cfg.rolesList[l]}`)
+								.setStyle('SECONDARY')
+						);
+					}
+					btnList.push(btnRow);
+					console.log(btnList);
+					i++;
+				}
+				readyMsg = { embeds: [embed], components: btnList };
 				break;
 			default:
 				embed.title = `zły parametr: ` + args[0];
