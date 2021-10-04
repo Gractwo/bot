@@ -71,8 +71,8 @@ module.exports = {
 		{
 			cl.on('interactionCreate', inter => {
 				if(!inter.isButton()) return;
-				if(!inter.member.guild.roles.cache.find((role) => role.name == inter.customId)) return;
 				const role = inter.member.guild.roles.cache.find((role) => role.name == inter.customId);
+				if(!role) return;
 				if(!inter.member.roles.cache.find((role) => role.name == inter.customId))
 				{
 				inter.member.roles.add(role)
