@@ -3,6 +3,7 @@
 	"hexBlue": "61f2ea",
 	"hexRed": "fb636b",
 	"iconurl": "https://i.imgur.com/4AmRDyX.png",
+	"timeout": 4000,
 	"rolesList": [
 		"tf2",
 		"liga",

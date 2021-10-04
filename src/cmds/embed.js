@@ -1,4 +1,4 @@
-const { MessageActionRow, MessageButton } = require('discord.js');
+const { MessageActionRow, MessageButton, ButtonInteraction, Interaction, Client } = require('discord.js');
 
 module.exports = {
 	name: 'embed',
@@ -58,13 +58,37 @@ module.exports = {
 					i++;
 				}
 				readyMsg = { embeds: [embed], components: btnList };
-				break;
-			default:
+				//Buttons fukken works
+				
+			break;
+			default: 
 				embed.title = `zły parametr: ` + args[0];
 				embed.color = cl.cfg.hexRed;
 				readyMsg = { embeds: [embed] };
 				break;
 		}
+
 		msg.channel.send(readyMsg);
+		if(args[0] === "rolki")
+		{
+			cl.on('interactionCreate', inter => {
+				if(!inter.isButton()) return;
+				const role = inter.member.guild.roles.cache.find((role) => role.name == inter.customId);
+				if(inter.member.roles.cache.has(role))
+				{
+				inter.member.roles.add(role)
+				inter.reply("Gratulacje, dodalismy ci tą bezużyteczną rangę",{timeout:cl.cfg.timeout})
+				.then (inter.deleteReply())
+				}
+				else
+				{
+				inter.member.roles.remove(role)
+				inter.reply("Gratulacje, odebraliśmy ci tą bezużyteczną rangę",{timeout:cl.cfg.timeout})
+				.then (inter.deleteReply())
+				}
+			}
+			)
+		}
+
 	},
 };
