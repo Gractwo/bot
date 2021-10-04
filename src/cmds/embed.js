@@ -58,8 +58,6 @@ module.exports = {
 					i++;
 				}
 				readyMsg = { embeds: [embed], components: btnList };
-				//Buttons fukken works
-				
 			break;
 			default: 
 				embed.title = `zły parametr: ` + args[0];
@@ -73,8 +71,9 @@ module.exports = {
 		{
 			cl.on('interactionCreate', inter => {
 				if(!inter.isButton()) return;
+				if(!inter.member.guild.roles.cache.find((role) => role.name == inter.customId)) return;
 				const role = inter.member.guild.roles.cache.find((role) => role.name == inter.customId);
-				if(inter.member.roles.cache.has(role))
+				if(!inter.member.roles.cache.find((roles) => role))
 				{
 				inter.member.roles.add(role)
 				inter.reply("Gratulacje, dodalismy ci tą bezużyteczną rangę",{timeout:cl.cfg.timeout})
