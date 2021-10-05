@@ -42,7 +42,7 @@ module.exports = {
 				embed.author = { name: 'Rolki' };
 				embed.description = cl.cfg.embedFields.rolkiDesc;
 				embed.footer = {
-					text: `Komenda wywołana przez ${msg.author.tag}`,
+					text: `#witaj`,
 					icon_url: cl.cfg.iconurl,
 				};
 				embed.timestamp = new Date();
