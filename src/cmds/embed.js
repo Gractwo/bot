@@ -1,4 +1,10 @@
-const { MessageActionRow, MessageButton, ButtonInteraction, Interaction, Client } = require('discord.js');
+const {
+	MessageActionRow,
+	MessageButton,
+	ButtonInteraction,
+	Interaction,
+	Client,
+} = require('discord.js');
 
 module.exports = {
 	name: 'embed',
@@ -7,18 +13,20 @@ module.exports = {
 		// not intended outside of specific scenarios
 		const embed = {
 			color: cl.cfg.hexBlue,
-			timestamp: new Date(),
-			footer: {
-				text: `Komenda wywołana przez ${msg.author.tag}`,
-				icon_url: cl.cfg.iconurl,
-			},
+			// timestamp: new Date(),
+			// footer: {
+			// 	text: `Komenda wywołana przez ${msg.author.tag}`,
+			// 	icon_url: cl.cfg.iconurl,
+			// },
 		};
 		switch (args[0]) {
 			case 'witaj':
-				embed.title = 'Witajcie w Gractwie!';
+				embed.author = {
+					name: 'Witajcie w Gractwie!',
+					icon_url: 'https://i.imgur.com/4AmRDyX.png',
+				};
 				embed.description =
 					'Jesteśmy grupą ludzi których kręcą gry. Proste, nie?\nSerwer ten miał wcześniej tematykę Team Fortressową.';
-				embed.footer.text = '#witaj';
 				embed.fields = cl.cfg.embedFields.witaj;
 				readyMsg = { embeds: [embed] };
 				break;
@@ -31,9 +39,13 @@ module.exports = {
 				readyMsg = { embeds: [embed] };
 				break;
 			case 'rolki':
-				embed.title = 'Rolki';
-				embed.description = '#rolki jest kanałem do przyznawania sobie ról.';
-				embed.footer.text = '#rolki';
+				embed.author = { name: 'Rolki' };
+				embed.description = cl.cfg.embedFields.rolkiDesc;
+				embed.footer = {
+					text: `Komenda wywołana przez ${msg.author.tag}`,
+					icon_url: cl.cfg.iconurl,
+				};
+				embed.timestamp = new Date();
 				// code responsible for making lists of buttons out of cl.cfg.rolesList
 				// & including them in the readyMsg
 				let i = 1,
@@ -58,8 +70,8 @@ module.exports = {
 					i++;
 				}
 				readyMsg = { embeds: [embed], components: btnList };
-			break;
-			default: 
+				break;
+			default:
 				embed.title = `zły parametr: ` + args[0];
 				embed.color = cl.cfg.hexRed;
 				readyMsg = { embeds: [embed] };
@@ -67,27 +79,31 @@ module.exports = {
 		}
 
 		msg.channel.send(readyMsg);
-		if(args[0] === "rolki")
-		{
-			cl.on('interactionCreate', inter => {
-				if(!inter.isButton()) return;
-				const role = inter.member.guild.roles.cache.find((role) => role.name == inter.customId);
-				if(!role) return;
-				if(!inter.member.roles.cache.find((role) => role.name == inter.customId))
-				{
-				inter.member.roles.add(role)
-				inter.reply("Gratulacje, dodalismy ci tą bezużyteczną rangę",{timeout:cl.cfg.timeout})
-				.then (inter.deleteReply())
+		if (args[0] === 'rolki') {
+			cl.on('interactionCreate', (inter) => {
+				if (!inter.isButton()) return;
+				const role = inter.member.guild.roles.cache.find(
+					(role) => role.name == inter.customId
+				);
+				if (!role) return;
+				if (
+					!inter.member.roles.cache.find((role) => role.name == inter.customId)
+				) {
+					inter.member.roles.add(role);
+					inter
+						.reply('Gratulacje, dodalismy ci tą bezużyteczną rangę', {
+							timeout: cl.cfg.timeout,
+						})
+						.then(inter.deleteReply());
+				} else {
+					inter.member.roles.remove(role);
+					inter
+						.reply('Gratulacje, odebraliśmy ci tą bezużyteczną rangę', {
+							timeout: cl.cfg.timeout,
+						})
+						.then(inter.deleteReply());
 				}
-				else
-				{
-				inter.member.roles.remove(role)
-				inter.reply("Gratulacje, odebraliśmy ci tą bezużyteczną rangę",{timeout:cl.cfg.timeout})
-				.then (inter.deleteReply())
-				}
-			}
-			)
+			});
 		}
-
 	},
 };

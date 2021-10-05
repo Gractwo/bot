@@ -31,6 +31,11 @@
 				"inline": true
 			},
 			{
+				"name": "DISCORD bezpośredni",
+				"value": "discord.gg/NBXq95C",
+				"inline": true
+			},
+			{
 				"name": "Gractwo TWITTER",
 				"value": "http://gractwo.pl/twitter",
 				"inline": true
@@ -43,11 +48,6 @@
 			{
 				"name": "Gractwo GITHUB",
 				"value": "http://gractwo.pl/github",
-				"inline": true
-			},
-			{
-				"name": "Gractwo FACEBOOK",
-				"value": "http://gractwo.pl/fb",
 				"inline": true
 			}
 		],
@@ -89,6 +89,7 @@
 				"value": "Nasz serwer, jak każdy inny, musi przestrzegać zasad zapisanych w warunkach użytkowania Discorda. Przypominamy o nich, bo choć nie są zbyt restrykcyjne, nie pozwalają na kilka określonych rzeczy."
 			}
 		],
-		"pomocDesc": "Komenda objaśniająca bota i jego zastosowanie, a także dostępne komendy.\n\nBot Gractwa funkcjonuje jako własne rozwiązanie na problemy z administrowaniem serwera Discord. Umożliwia między innymi samo-nadawanie rolek od gier, lub odsłuchiwanie muzyki.\n\nPoniżej znajduje się lista dostępnych komend:"
+		"pomocDesc": "Komenda objaśniająca bota i jego zastosowanie, a także dostępne komendy.\n\nBot Gractwa funkcjonuje jako własne rozwiązanie na problemy z administrowaniem serwera Discord. Umożliwia między innymi samo-nadawanie rolek od gier, lub odsłuchiwanie muzyki.\n\nPoniżej znajduje się lista dostępnych komend:",
+		"rolkiDesc": "Poniżej widnieją przyciski służące do przyznawania bądź odejmowanie sobie ról powiązanych z grami. Służą one do oznaczania wszystkich zainteresowanych daną grą na określonym kanale."
 	}
 }
