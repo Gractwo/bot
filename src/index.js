@@ -38,6 +38,7 @@ cl.on('messageCreate', (msg) => {
 		msg.reply(
 			`An error occured while trying to execute ${cmdName} with args ${args}`
 		);
+		console.log(error);
 		return;
 	}
 	console.log(`msgCommand: ${cmdName + args} by ${msg.author.tag}`);

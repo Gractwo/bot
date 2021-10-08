@@ -11,7 +11,7 @@ module.exports = {
 	execute(cl, msg, args) {
 		// TODO: add a permissions check here to make sure nobody can spawn msgs
 		// not intended outside of specific scenarios
-		const embed = {
+		let embed = {
 			color: cl.cfg.hexBlue,
 			// timestamp: new Date(),
 			// footer: {
@@ -19,6 +19,9 @@ module.exports = {
 			// 	icon_url: cl.cfg.iconurl,
 			// },
 		};
+
+		let readyMsg;
+
 		switch (args[0]) {
 			case 'witaj':
 				embed.author = {
@@ -34,7 +37,11 @@ module.exports = {
 				embed.title = 'Regulamin';
 				embed.description =
 					'Regulamin naszego serwera składa się z tego, co następuje:';
-				embed.footer.text = `Ostatnio zaktualizowany`;
+				embed.footer = {
+					text: `Ostatnio zaktualizowany`,
+					icon_url: cl.cfg.iconurl,
+				};
+				embed.timestamp = new Date();
 				embed.fields = cl.cfg.embedFields.regulamin;
 				readyMsg = { embeds: [embed] };
 				break;
