@@ -11,7 +11,7 @@ module.exports = {
         let aplay;
         let queue;
 
-        async function link(msg) {
+        function link(msg) {
             let request = msg.content.slice(path.basename(__filename).length + cl.cfg.prefix.length - 3);
             if (request.trim() == "") {
                 msg.reply("Dej link albo tagi albo weź i spierdalaj");
@@ -19,9 +19,9 @@ module.exports = {
                 request = request.trim()
                 if (ytdl.validateURL(request)) {
                     msg.reply("Poprawny link");
-                    link = './sound/' + msg.member.voice.channel.id + '.mp3'
-                    await ytdl(request).pipe(fs.createWriteStream(link));
-                    return link;
+                    let linked = './sound/' + msg.member.voice.channel.id + '.mp4'
+                    ytdl(request).pipe(fs.createWriteStream(linked));
+                    return linked;
                 } else {
                     msg.reply("Kurwo wenecka daj prawdziwy link a nie jaja sobie robisz");
                 }
@@ -39,7 +39,8 @@ module.exports = {
             })
         }
         aplay = createAudioPlayer();
-        let song = createAudioResource(link(msg));
+        link(msg);
+        let song = createAudioResource('./sound/' + msg.member.voice.channel.id + '.mp4');
         aplay.play(song);
         connection.subscribe(aplay);
         aplay.on('error', error => {
