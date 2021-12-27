@@ -6,6 +6,7 @@ const cl = new discordjs.Client({
 	intents: [
 		discordjs.Intents.FLAGS.GUILDS,
 		discordjs.Intents.FLAGS.GUILD_MESSAGES,
+		discordjs.Intents.FLAGS.GUILD_VOICE_STATES,
 	],
 });
 cl.cfg = require('./cfg.json');

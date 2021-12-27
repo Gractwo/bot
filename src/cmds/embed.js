@@ -13,11 +13,6 @@ module.exports = {
 		// not intended outside of specific scenarios
 		let embed = {
 			color: cl.cfg.hexBlue,
-			// timestamp: new Date(),
-			// footer: {
-			// 	text: `Komenda wywołana przez ${msg.author.tag}`,
-			// 	icon_url: cl.cfg.iconurl,
-			// },
 		};
 
 		let readyMsg;
