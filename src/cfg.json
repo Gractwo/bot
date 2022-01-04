@@ -1,97 +1,99 @@
 {
-    "prefix": ".",
-    "hexBlue": "61f2ea",
-    "hexRed": "fb636b",
-    "iconurl": "https://i.imgur.com/4AmRDyX.png",
-    "timeout": 4000,
-    "rolesList": [
-        "tf2",
-        "liga",
-        "csgo",
-        "minecraft",
-        "rainbow-six",
-        "apex",
-        "genshin",
-        "valorant"
-    ],
-    "embedFields": {
-        "witaj": [{
-                "name": "Zasady",
-                "value": "Zasady serwera są spisane na kanale `regulamin`. Pamiętajcie, by tam zajrzeć."
-            },
-            {
-                "name": "Gractwo WWW",
-                "value": "http://gractwo.pl",
-                "inline": true
-            },
-            {
-                "name": "Gractwo DISCORD",
-                "value": "http://gractwo.pl/discord",
-                "inline": true
-            },
-            {
-                "name": "DISCORD bezpośredni",
-                "value": "discord.gg/NBXq95C",
-                "inline": true
-            },
-            {
-                "name": "Gractwo TWITTER",
-                "value": "http://gractwo.pl/twitter",
-                "inline": true
-            },
-            {
-                "name": "Gractwo YOUTUBE",
-                "value": "http://gractwo.pl/youtube",
-                "inline": true
-            },
-            {
-                "name": "Gractwo GITHUB",
-                "value": "http://gractwo.pl/github",
-                "inline": true
-            }
-        ],
-        "regulamin": [{
-                "name": "§0 Moje słowo jest prawem",
-                "value": "Moje słowo jest prawem"
-            },
-            {
-                "name": "§1 Szacunek",
-                "value": "Na naszym serwerze obowiązuje szacunek do innych osób podczas niesatyrycznej dyskusji. Podczas dyskusji satyrycznej wszelkie chwyty dozwolone chyba że zadecyduje inaczej"
-            },
-            {
-                "name": "§2 Spam / Trolling",
-                "value": "Jeżeli będziesz bezużytecznie spamować lub nieprzyjmenie się zachowywać zostaniesz ztrollowany"
-            },
-            {
-                "name": "§3 Bagno",
-                "value": "Kanał #bagno jest najbardziej rakowym kanałem na naszym serwerze. Oznacza to że nie jest monitorowany. Jeżeli czujesz, że rzecz którą chcesz tam umieścić jest nadzwyczajnie kontrowersyjna wciśnij Enter. "
-            },
-            {
-                "name": "§4 Poprawne Kanały",
-                "value": "Rozmowy na dany temat powinny toczyć się w kanałach"
-            },
-            {
-                "name": "§5 Memy i Gify",
-                "value": "Uwielbiam memy"
-            },
-            {
-                "name": "§6 Reklamy",
-                "value": "Za reklamy bez zezwolenia moderatora lub administratora nabijamy na pal. Z zezwoleniem też."
-            },
-            {
-                "name": "§7 Przestrzeganie Regulaminu",
-                "value": "Przestrzeganie regulaminu jest obowiązkowe chyba że to ja."
-            },
-            {
-                "name": "§8 Obcowanie z botem",
-                "value": "( ͡° ͜ʖ ͡°)"
-            },
-            {
-                "name": "§9 Warunki Użytkowania Discord (ToS)",
-                "value": "monkaToS"
-            }
-        ],
-        "pomocDesc": "Komenda objaśniająca bota i jego zastosowanie, a także dostępne komendy.\n\nBot Gractwa funkcjonuje jako własne rozwiązanie na problemy z administrowaniem serwera Discord. Umożliwia między innymi samo-nadawanie rolek od gier, lub odsłuchiwanie muzyki.\n\nPoniżej znajduje się lista dostępnych komend:",
-        "rolkiDesc": "Poniżej widnieją przyciski służące do przyznawania bądź odejmowanie sobie ról powiązanych z grami. Służą one do oznaczania wszystkich zainteresowanych daną grą na określonym kanale."
-    }
+	"prefix": ".",
+	"hexBlue": "61f2ea",
+	"hexRed": "fb636b",
+	"iconurl": "https://i.imgur.com/4AmRDyX.png",
+	"timeout": 4000,
+	"rolesList": [
+		"tf2",
+		"liga",
+		"csgo",
+		"minecraft",
+		"rainbow-six",
+		"apex",
+		"genshin",
+		"valorant"
+	],
+	"embedFields": {
+		"witaj": [
+			{
+				"name": "Zasady",
+				"value": "Zasady serwera są spisane na kanale `regulamin`. Pamiętajcie, by tam zajrzeć."
+			},
+			{
+				"name": "Gractwo WWW",
+				"value": "http://gractwo.pl",
+				"inline": true
+			},
+			{
+				"name": "Gractwo DISCORD",
+				"value": "http://gractwo.pl/discord",
+				"inline": true
+			},
+			{
+				"name": "DISCORD bezpośredni",
+				"value": "discord.gg/NBXq95C",
+				"inline": true
+			},
+			{
+				"name": "Gractwo TWITTER",
+				"value": "http://gractwo.pl/twitter",
+				"inline": true
+			},
+			{
+				"name": "Gractwo YOUTUBE",
+				"value": "http://gractwo.pl/youtube",
+				"inline": true
+			},
+			{
+				"name": "Gractwo GITHUB",
+				"value": "http://gractwo.pl/github",
+				"inline": true
+			}
+		],
+		"regulamin": [
+			{
+				"name": "§0 Moje słowo jest prawem",
+				"value": "Moje słowo jest prawem"
+			},
+			{
+				"name": "§1 Szacunek",
+				"value": "Na naszym serwerze obowiązuje szacunek do innych osób podczas niesatyrycznej dyskusji. Podczas dyskusji satyrycznej wszelkie chwyty dozwolone chyba że zadecyduje inaczej"
+			},
+			{
+				"name": "§2 Spam / Trolling",
+				"value": "Jeżeli będziesz bezużytecznie spamować lub nieprzyjmenie się zachowywać zostaniesz ztrollowany"
+			},
+			{
+				"name": "§3 Bagno",
+				"value": "Kanał #bagno jest najbardziej rakowym kanałem na naszym serwerze. Oznacza to że nie jest monitorowany. Jeżeli czujesz, że rzecz którą chcesz tam umieścić jest nadzwyczajnie kontrowersyjna wciśnij Enter. "
+			},
+			{
+				"name": "§4 Poprawne Kanały",
+				"value": "Rozmowy na dany temat powinny toczyć się w kanałach"
+			},
+			{
+				"name": "§5 Memy i Gify",
+				"value": "Uwielbiam memy"
+			},
+			{
+				"name": "§6 Reklamy",
+				"value": "Za reklamy bez zezwolenia moderatora lub administratora nabijamy na pal. Z zezwoleniem też."
+			},
+			{
+				"name": "§7 Przestrzeganie Regulaminu",
+				"value": "Przestrzeganie regulaminu jest obowiązkowe chyba że to ja."
+			},
+			{
+				"name": "§8 Obcowanie z botem",
+				"value": "( ͡° ͜ʖ ͡°)"
+			},
+			{
+				"name": "§9 Warunki Użytkowania Discord (ToS)",
+				"value": "monkaToS"
+			}
+		],
+		"pomocDesc": "Komenda objaśniająca bota i jego zastosowanie, a także dostępne komendy.\n\nBot Gractwa funkcjonuje jako własne rozwiązanie na problemy z administrowaniem serwera Discord. Umożliwia między innymi samo-nadawanie rolek od gier, lub odsłuchiwanie muzyki.\n\nPoniżej znajduje się lista dostępnych komend:",
+		"rolkiDesc": "Poniżej widnieją przyciski służące do przyznawania bądź odejmowanie sobie ról powiązanych z grami. Służą one do oznaczania wszystkich zainteresowanych daną grą na określonym kanale."
+	}
 }
