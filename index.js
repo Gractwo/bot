@@ -1,8 +1,19 @@
 const discordjs = require("discord.js");
 const fs = require("fs");
 const redis = require("./src/functions/redis");
+const sql = require("./src/functions/postgres");
 const { createClient } = require("redis");
-const { connect } = require("http2");
+const { Client } = require("pg");
+const colors = require("colors");
+
+colors.setTheme({
+  prompt: "grey",
+  info: "green",
+  warn: "yellow",
+  debug: "blue",
+  error: "red",
+});
+
 require("dotenv").config();
 
 const cl = new discordjs.Client({
@@ -13,10 +24,22 @@ const cl = new discordjs.Client({
   ],
 });
 
+//redis connect
 const redisConnection = createClient({
   url: process.env.REDIS_TOKEN,
 });
-redisConnection.connect();
+redisConnection
+  .connect()
+  .then(() => console.log("✔️   redis connected".info))
+  .catch((err) => console.error(err.stack.red));
+
+//postgresql connect
+const client = new Client();
+client
+  .connect()
+  .then(() => console.log("✔️   postgres connected".info))
+  .catch((err) => console.error(err.stack.red));
+
 cl.cfg = require("./cfg.json");
 cl.cmds = new discordjs.Collection();
 
@@ -33,6 +56,9 @@ cl.on("messageCreate", async (msg) => {
   if (msg.author.bot) return;
   if (!msg.content.startsWith(cl.cfg.prefix)) {
     if (await redis.expCheck(msg.author.id, redisConnection)) {
+      sql.addExp(client, msg.author.id);
+    } else {
+      sql.messageCount(client, msg.author.id);
     }
   }
   const args = msg.content.slice(cl.cfg.prefix.length).trim().split(/ +/);
@@ -57,7 +83,7 @@ cl.on("messageCreate", async (msg) => {
 });
 
 cl.once("ready", () => {
-  console.log(`bot ready; logged in as ${cl.user.tag}\n--`);
+  console.log(`bot ready; logged in as ${cl.user.tag}\n--`.info);
   cl.user.setActivity(".pomoc", { type: "LISTENING" });
 });
 cl.login(process.env.TOKEN); // here comes the boooy

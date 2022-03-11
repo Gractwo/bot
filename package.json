@@ -23,6 +23,7 @@
     "dependencies": {
         "@discordjs/opus": "^0.5.3",
         "@discordjs/voice": "^0.7.5",
+        "colors": "^1.4.0",
         "daemon": "^1.1.0",
         "discord.js": "^13.1.0",
         "dotenv": "^10.0.0",
