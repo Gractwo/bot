@@ -1,6 +1,8 @@
 const discordjs = require("discord.js");
 const fs = require("fs");
-const { Tedis, TedisPool } = require("tedis");
+const redis = require("./src/functions/redis");
+const { createClient } = require("redis");
+const { connect } = require("http2");
 require("dotenv").config();
 
 const cl = new discordjs.Client({
@@ -11,12 +13,10 @@ const cl = new discordjs.Client({
   ],
 });
 
-//Redis connect
-const redis = new Tedis({
-  host: "127.0.0.1",
-  port: 6379,
-  password: process.env.REDIS_TOKEN,
+const redisConnection = createClient({
+  url: process.env.REDIS_TOKEN,
 });
+redisConnection.connect();
 cl.cfg = require("./cfg.json");
 cl.cmds = new discordjs.Collection();
 
@@ -29,11 +29,12 @@ for (const Fl of cmdsFls) {
   cl.cmds.set(cmd.name, cmd);
 }
 
-cl.on("messageCreate", (msg) => {
+cl.on("messageCreate", async (msg) => {
   if (msg.author.bot) return;
   if (!msg.content.startsWith(cl.cfg.prefix)) {
+    if (await redis.expCheck(msg.author.id, redisConnection)) {
+    }
   }
-
   const args = msg.content.slice(cl.cfg.prefix.length).trim().split(/ +/);
   const cmdName = args.shift().toLowerCase();
 
@@ -56,7 +57,6 @@ cl.on("messageCreate", (msg) => {
 });
 
 cl.once("ready", () => {
-  console.clear();
   console.log(`bot ready; logged in as ${cl.user.tag}\n--`);
   cl.user.setActivity(".pomoc", { type: "LISTENING" });
 });
