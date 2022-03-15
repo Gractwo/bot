@@ -5,6 +5,7 @@ const sql = require("./src/functions/postgres");
 const { createClient } = require("redis");
 const { Client } = require("pg");
 const colors = require("colors");
+const { connect } = require("http2");
 
 colors.setTheme({
   prompt: "grey",
@@ -68,7 +69,7 @@ cl.on("messageCreate", async (msg) => {
   const cmd = cl.cmds.get(cmdName);
 
   try {
-    cmd.execute(cl, msg, args);
+    cmd.execute(cl, msg, args, client);
   } catch (error) {
     console.error(
       `msgCommand error: ${cmdName} with args ${args} by ${msg.author.tag}\n--\n${error}\n--`
