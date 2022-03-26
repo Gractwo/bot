@@ -53,44 +53,44 @@
 		],
 		"regulamin": [
 			{
-				"name": "§0 Moje słowo jest prawem",
-				"value": "Moje słowo jest prawem"
-			},
-			{
 				"name": "§1 Szacunek",
-				"value": "Na naszym serwerze obowiązuje szacunek do innych osób podczas niesatyrycznej dyskusji. Podczas dyskusji satyrycznej wszelkie chwyty dozwolone chyba że zadecyduje inaczej"
+				"value": "Na naszym serwerze obowiązuje szacunek do innych osób podczas niesatyrycznej dyskusji."
 			},
 			{
 				"name": "§2 Spam / Trolling",
-				"value": "Jeżeli będziesz bezużytecznie spamować lub nieprzyjmenie się zachowywać zostaniesz ztrollowany"
+				"value": "Jeżeli będziesz bezużytecznie spamować lub nieprzyjmenie się zachowywać zostaniesz zbanowany."
 			},
 			{
 				"name": "§3 Bagno",
-				"value": "Kanał #bagno jest najbardziej rakowym kanałem na naszym serwerze. Oznacza to że nie jest monitorowany. Jeżeli czujesz, że rzecz którą chcesz tam umieścić jest nadzwyczajnie kontrowersyjna wciśnij Enter. "
+				"value": "Kanał #bagno jest najbardziej wyluzowanym kanałem na naszym serwerze. Nie oznacza to jednak, że nie jest monitorowany. Jeżeli czujesz, że rzecz którą chcesz tam umieścić jest nadzwyczajnie kontrowersyjna, zastanów się dwa razy przed wciśnięciem Enter."
 			},
 			{
 				"name": "§4 Poprawne Kanały",
-				"value": "Rozmowy na dany temat powinny toczyć się w kanałach"
+				"value": "Rozmowy na dany temat powinny toczyć się w kanałach do tego przeznaczonych."
 			},
 			{
 				"name": "§5 Memy i Gify",
-				"value": "Uwielbiam memy"
+				"value": "Memy i Gify nie są zbyt przyjemne dla oka bez kontekstu. Najlepiej jest nie postować ich, jeżeli nie pasują do prowadzonej aktualnie dyskusji."
 			},
 			{
 				"name": "§6 Reklamy",
-				"value": "Za reklamy bez zezwolenia moderatora lub administratora nabijamy na pal. Z zezwoleniem też."
+				"value": "Zakaz reklam bez zezwolenia moderatora lub administratora. Pozwolenia na reklamę muszą być wydane przed jej zamieszczeniem."
 			},
 			{
 				"name": "§7 Przestrzeganie Regulaminu",
-				"value": "Przestrzeganie regulaminu jest obowiązkowe chyba że to ja."
+				"value": "Przestrzeganie regulaminu jest obowiązkowe, a to że go ktoś nie przeczytał nic nie zmienia."
 			},
 			{
 				"name": "§8 Obcowanie z botem",
-				"value": "( ͡° ͜ʖ ͡°)"
+				"value": "Próby intencjonalnego łamania bota nie są mile widziane, tak jak nadużywanie go w celach spamu kanałów."
 			},
 			{
 				"name": "§9 Warunki Użytkowania Discord (ToS)",
-				"value": "monkaToS"
+				"value": "Nasz serwer, jak każdy inny, musi przestrzegać zasad zapisanych w warunkach użytkowania Discorda. Przypominamy o nich, bo choć nie są zbyt restrykcyjne, nie pozwalają na kilka określonych rzeczy."
+			},
+			{
+				"name": "§10 Braki Legislacyjne",
+				"value": "W razie jakichkolwiek braków legislacyjnych lub wątpliwości w interpretacji prawa polskiego wskazane jest rozważyć precedens wpisany w scenariusz Gractwo Dating Sim."
 			}
 		],
 		"pomocDesc": "Komenda objaśniająca bota i jego zastosowanie, a także dostępne komendy.\n\nBot Gractwa funkcjonuje jako własne rozwiązanie na problemy z administrowaniem serwera Discord. Umożliwia między innymi samo-nadawanie rolek od gier, lub odsłuchiwanie muzyki.\n\nPoniżej znajduje się lista dostępnych komend:",
