@@ -32,4 +32,6 @@ module.exports = {
     }
     return check.rows;
   },
+  addBadge: async function (args) {},
+  giveBadge: async function (args) {},
 };
