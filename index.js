@@ -3,9 +3,9 @@ const fs = require("fs");
 const redis = require("./src/functions/redis");
 const sql = require("./src/functions/postgres");
 const { createClient } = require("redis");
-const { Client } = require("pg");
 const colors = require("colors");
-const { connect } = require("http2");
+const { PrismaClient } = require("@prisma/client");
+const { messageCount } = require("./src/functions/postgres");
 
 colors.setTheme({
   prompt: "grey",
@@ -34,16 +34,13 @@ redisConnection
   .then(() => console.log("✔️   redis connected".info))
   .catch((err) => console.error(err.stack.red));
 
-//postgresql connect
-const client = new Client();
-client
-  .connect()
-  .then(() => console.log("✔️   postgres connected".info))
-  .catch((err) => console.error(err.stack.red));
+//postgres connection
+const client = new PrismaClient();
 
 cl.cfg = require("./cfg.json");
 cl.cmds = new discordjs.Collection();
 
+//cmds handler
 const cmdsFls = fs
   .readdirSync(`./src/cmds`)
   .filter((file) => file.endsWith(`.js`));
@@ -53,15 +50,20 @@ for (const Fl of cmdsFls) {
   cl.cmds.set(cmd.name, cmd);
 }
 
+//command execution
 cl.on("messageCreate", async (msg) => {
   if (msg.author.bot) return;
+
+  //exp
   if (!msg.content.startsWith(cl.cfg.prefix)) {
+    messageCount(client, msg.author.id);
     if (await redis.expCheck(msg.author.id, redisConnection)) {
-      sql.addExp(client, msg.author.id);
-    } else {
-      sql.messageCount(client, msg.author.id);
+      sql.addExp(client, msg.author.id, 10, 25);
     }
+  } else {
+    sql.messageCount(client, msg.author.id);
   }
+
   const args = msg.content.slice(cl.cfg.prefix.length).trim().split(/ +/);
   const cmdName = args.shift().toLowerCase();
 
@@ -83,6 +85,7 @@ cl.on("messageCreate", async (msg) => {
   console.log(`msgCommand: ${cmdName + args} by ${msg.author.tag}`);
 });
 
+//client
 cl.once("ready", () => {
   console.log(`bot ready; logged in as ${cl.user.tag}\n--`.info);
   cl.user.setActivity(".pomoc", { type: "LISTENING" });

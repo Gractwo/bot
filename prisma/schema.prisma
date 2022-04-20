@@ -1,0 +1,37 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model badges {
+  badge_id          Int            @id
+  badge_name        String
+  badge_description String
+  badge_type        Int            @default(0)
+  given_badges      given_badges[] @ignore
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by the Prisma Client.
+model given_badges {
+  user_id  String
+  badge_id Int
+  badges   badges @relation(fields: [badge_id], references: [badge_id], onDelete: NoAction, onUpdate: NoAction, map: "badge_id")
+  users    users  @relation(fields: [user_id], references: [user_id], onDelete: NoAction, onUpdate: NoAction, map: "user_id")
+
+  @@index([badge_id], map: "fki_badge_id")
+  @@index([user_id], map: "fki_user_id")
+  @@ignore
+}
+
+model users {
+  user_id      String         @id(map: "user_pkey")
+  exp          Int            @default(0)
+  msg_count    Int            @default(0)
+  voice_time   Int            @default(0)
+  lvl          Int            @default(0)
+  given_badges given_badges[] @ignore
+}
