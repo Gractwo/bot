@@ -1,11 +1,9 @@
 const discordjs = require("discord.js");
 const fs = require("fs");
 const redis = require("./src/functions/redis");
-const sql = require("./src/functions/postgres");
+const { Postgres } = require("./src/functions/postgres");
 const { createClient } = require("redis");
 const colors = require("colors");
-const { PrismaClient } = require("@prisma/client");
-const { messageCount } = require("./src/functions/postgres");
 
 colors.setTheme({
   prompt: "grey",
@@ -35,7 +33,7 @@ redisConnection
   .catch((err) => console.error(err.stack.red));
 
 //postgres connection
-const client = new PrismaClient();
+const client = new Postgres();
 
 cl.cfg = require("./cfg.json");
 cl.cmds = new discordjs.Collection();
@@ -56,12 +54,12 @@ cl.on("messageCreate", async (msg) => {
 
   //exp
   if (!msg.content.startsWith(cl.cfg.prefix)) {
-    messageCount(client, msg.author.id);
+    client.messageCount(msg.author.id);
     if (await redis.expCheck(msg.author.id, redisConnection)) {
-      sql.addExp(client, msg.author.id, 10, 25);
+      client.addExp(msg.author.id, 10, 25);
     }
   } else {
-    sql.messageCount(client, msg.author.id);
+    client.messageCount(msg.author.id);
   }
 
   const args = msg.content.slice(cl.cfg.prefix.length).trim().split(/ +/);
