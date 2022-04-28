@@ -3,7 +3,6 @@ const { ReactionUserManager } = require("discord.js");
 module.exports = {
   name: "profile",
   async execute(cl, msg, args, connect) {
-    const { profile } = require("../functions/postgres");
     const { roundRect, expThreshold } = require("../functions/tools");
     const canvas = require("canvas");
     await connect
