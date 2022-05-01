@@ -18,7 +18,7 @@
 		"witaj": [
 			{
 				"name": "Zasady",
-				"value": "Zasady serwera można wywołać komendą `regulamin`. Zgrubsza: 'nie bądź uschłą wierzbą'. :)"
+				"value": "Zasady serwera można wywołać komendą `.regulamin`.\nZgrubsza: 'nie bądź uschłą wierzbą'. :)"
 			},
 			{
 				"name": "Gractwo WWW",
