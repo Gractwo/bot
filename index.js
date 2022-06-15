@@ -54,12 +54,12 @@ cl.on("messageCreate", async (msg) => {
 
   //exp
   if (!msg.content.startsWith(cl.cfg.prefix)) {
-    client.messageCount(msg.author.id);
+    client.messageCount(msg.author.id, msg.channel.id);
     if (await redis.expCheck(msg.author.id, redisConnection)) {
       client.addExp(msg.author.id, 10, 25);
     }
   } else {
-    client.messageCount(msg.author.id);
+    //client.messageCount(msg.author.id);
   }
 
   const args = msg.content.slice(cl.cfg.prefix.length).trim().split(/ +/);

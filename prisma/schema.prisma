@@ -11,6 +11,7 @@ model badges {
   badge_id          Int           @id
   badge_name        String
   badge_description String
+  badge_visibility  Boolean       @default(true)
   badge_type        Int           @default(0)
   givenbadges       givenbadges[]
 }
@@ -27,10 +28,20 @@ model givenbadges {
 }
 
 model users {
-  user_id     String        @id(map: "user_pkey")
-  exp         Int           @default(0)
-  msg_count   Int           @default(0)
-  voice_time  Int           @default(0)
-  lvl         Int           @default(0)
-  givenbadges givenbadges[]
+  user_id      String         @id(map: "user_pkey")
+  exp          Int            @default(0)
+  voice_time   Int            @default(0)
+  lvl          Int            @default(0)
+  givenbadges  givenbadges[]
+  sendmessages sendmessages[]
+}
+
+model sendmessages {
+  id        Int      @id @default(autoincrement())
+  user_id   String
+  date      DateTime @db.Date
+  channel   String
+  msg_count Int
+  users     users    @relation(fields: [user_id], references: [user_id], onDelete: NoAction, onUpdate: NoAction, map: "user_id")
+
 }

@@ -26,17 +26,22 @@ class Postgres {
     });
   }
 
+  async msg_state(userID) {
+    return await this.client.users.findUnique({
+      where: {
+        user_id: userID,
+      },
+    });
+  }
+
   async addExp(userID, min, max) {
-    await this.#ifExist(userID).then(async () => {
+    await this.#ifUserExist(userID).then(async () => {
       const rExp = randomExp(min, max);
       return await this.client.users.update({
         where: {
           user_id: userID,
         },
         data: {
-          msg_count: {
-            increment: 1,
-          },
           exp: {
             increment: rExp,
           },
@@ -56,13 +61,28 @@ class Postgres {
       });
     });
   }
-  async #ifExist(userID) {
-    if ((await !this.profile(userID)) == null) {
+
+  async #ifUserExist(userID) {
+    if ((await this.profile(userID)) == null) {
+      console.log("Account");
       await this.client.users.create({
         data: {
           user_id: userID,
-          msg_count: 0,
           lvl: 0,
+          exp: 0,
+        },
+      });
+    }
+  }
+
+  async #ifMsgsExist(userID, channelID) {
+    if ((await this.profile(userID)) == null) {
+      console.log("Account");
+      await this.client.users.create({
+        data: {
+          user_id: userID,
+          lvl: 0,
+          exp: 0,
         },
       });
     }

@@ -1,5 +1,3 @@
-const { ReactionUserManager } = require("discord.js");
-
 module.exports = {
   name: "profile",
   async execute(cl, msg, args, connect) {
