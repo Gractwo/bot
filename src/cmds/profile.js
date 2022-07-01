@@ -1,4 +1,4 @@
-/*module.exports = {
+module.exports = {
   name: "profile",
   async execute(cl, msg, args, connect) {
     const { roundRect, expThreshold } = require("../functions/tools");
@@ -54,4 +54,3 @@
       .catch((err) => console.error(err.stack));
   },
 };
-*/
