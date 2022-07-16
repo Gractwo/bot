@@ -21,6 +21,15 @@ for (const Fl of cmdsFls) {
 }
 
 cl.on('messageCreate', (msg) => {
+	
+	// peak comedy
+	if(msg.content.toLowerCase() === "!rank" || msg.content.toLowerCase() === "!levels"){
+		msg.channel.send({
+			files: ["https://cdn.discordapp.com/attachments/281070649374670849/871103257580281876/tenor.gif"]
+		});
+	}
+	
+	
 	if (!msg.content.startsWith(cl.cfg.prefix) || msg.author.bot) return;
 
 	const args = msg.content.slice(cl.cfg.prefix.length).trim().split(/ +/);
