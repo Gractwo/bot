@@ -17,4 +17,4 @@ jobs:
         run: |
           docker stop ${{ github.event.repository.name }} || true
           docker rm ${{ github.event.repository.name }} || true
-          docker run -d -e "DISCORD_TOKEN=${{ secrets.DISCORD_TOKEN }}" -e "REDIS_TOKEN=${{ secrets.REDIS_TOKEN }}" -e "DATABASE_URL=${{ secrets.DATABASE_URL }}" --restart always --network BOT --name ${{ github.event.repository.name }} ${{ github.repository }}
+          docker run -d -e "DISCORD_TOKEN=${{ secrets.TOKEN }}" --restart always -p 2020:2020 --name ${{ github.event.repository.name }} ${{ github.repository }}
