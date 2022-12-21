@@ -2,6 +2,7 @@ import DiscordJS from 'discord.js';
 // import fs from 'fs';
 import express from 'express';
 import dotenv from 'dotenv';
+import cors from 'cors';
 import config from './cfg.json';
 dotenv.config();
 
@@ -12,6 +13,7 @@ const client = new DiscordJS.Client({
 	],
 });
 const app = express();
+app.use(cors());
 const port = process.env.PORT || config.api.fallbackPort;
 let memberCount: number | null, previousCount: number | null;
 
