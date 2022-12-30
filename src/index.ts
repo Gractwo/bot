@@ -10,7 +10,6 @@ client.boot();
 
 const app = express();
 app.use(cors());
-
 const members = new MemberCount();
 let port = process.env.PORT || config.api.fallbackPort;
 
