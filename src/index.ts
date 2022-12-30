@@ -1,52 +1,28 @@
-import DiscordJS from 'discord.js';
-// import fs from 'fs';
+import { BotClient } from './structures/Client';
+import { MemberCount } from './structures/MemberCount';
 import express from 'express';
-import dotenv from 'dotenv';
 import cors from 'cors';
 import config from './cfg.json';
-dotenv.config();
+require('dotenv').config();
 
-const client = new DiscordJS.Client({
-	intents: [
-		DiscordJS.GatewayIntentBits.Guilds,
-		DiscordJS.GatewayIntentBits.GuildMembers,
-	],
-});
+const client = new BotClient();
+client.boot();
+
 const app = express();
 app.use(cors());
-const port = process.env.PORT || config.api.fallbackPort;
-let memberCount: number | null, previousCount: number | null;
+const members = new MemberCount();
+let port = process.env.PORT || config.api.fallbackPort;
 
 app.get('/', (req, res) => {
 	res.sendStatus(200);
 });
 app.get('/members', (req, res) => {
 	res
-		.status(memberCount ? 200 : 500)
-		.send(memberCount ? memberCount.toString() : 'Server Error');
+		.status(members.current ? 200 : 500)
+		.send(members.current ? members.current.toString() : 'Server Error');
 });
-
-client.on('guildMemberAdd', () => {
-	if (memberCount) memberCount++;
-});
-client.on('guildMemberRemove', () => {
-	if (memberCount) memberCount--;
-});
-client.on('ready', () => {
-	console.log(`BOT: Now logged in as ${client.user?.tag}.`);
-	memberCount =
-		client.guilds.resolve(config.api.memberCountGuildId)?.memberCount || null;
-	setInterval(() => {
-		if (previousCount != memberCount) {
-			console.log(
-				`API/BOT: Gractwo memberCount is ${`now ${memberCount}` || 'unset'}.`
-			);
-		}
-		previousCount = memberCount;
-	}, 5 * 1000);
-});
-
 app.listen(port, () => {
 	console.log(`API: Now listening on :${port}.`);
 });
-client.login(process.env.TOKEN);
+
+export { client, app, config, members };
