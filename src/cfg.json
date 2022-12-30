@@ -2,5 +2,8 @@
 	"api": {
 		"fallbackPort": 2020,
 		"memberCountGuildId": "447075692664979466"
+	},
+	"dsc": {
+		"slashCmdTestGuildId": "860916258282012692"
 	}
 }
