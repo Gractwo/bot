@@ -1,6 +1,7 @@
 import { BotClient } from './structures/Client';
 import { MemberCount } from './structures/MemberCount';
 import express from 'express';
+import cors from 'cors';
 import config from './cfg.json';
 require('dotenv').config();
 
@@ -8,6 +9,8 @@ const client = new BotClient();
 client.boot();
 
 const app = express();
+app.use(cors());
+
 const members = new MemberCount();
 let port = process.env.PORT || config.api.fallbackPort;
 
