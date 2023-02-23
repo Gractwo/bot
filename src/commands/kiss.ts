@@ -18,11 +18,11 @@ export default new Command({
 			.setColor('LuminousVividPink')
 			.setTitle(
 				`${interaction.user.username} kissed ${
-					args.getUser('target')?.username
+					args.getUser('target')?.username || 'a ghost'
 				} :)`
 			)
 			.setImage(
-				'https://media.tenor.com/aXjYu-OWsa8AAAAd/renko-usami-touhou.gif'
+				'https://media.discordapp.net/attachments/594222795999805643/1078363884190183485/ezgif-1-96508f9a03.gif'
 			);
 		interaction.followUp({ embeds: [kissEmbed] });
 		interaction.channel?.send(`${args.getUser('target')}`);
